@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 빛나는 3년: 고등학교 생활 기록</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            overflow: hidden; /* 초기 화면 스크롤 방지 */
+        }
+
+        /* 성문 스타일 */
+        #gate-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('성문_배경.jpg'); /* 성문 배경 이미지 */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: pointer;
+            transition: opacity 1s ease;
+        }
+
+        #gate {
+            width: 500px;
+            height: 400px;
+            background-image: url('성문_이미지.png'); /* 성문 이미지 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 1s ease;
+        }
+
+        #gate-container.open {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        #gate.open {
+            transform: translateY(-100vh);
+        }
+
+        /* 내용 스타일 */
+        #content {
+            padding: 50px;
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        #content.visible {
+            opacity: 1;
+        }
+
+        h1 {
+            text-align: center;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #777;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #666;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 푸터 스타일 */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #ddd;
+            color: #777;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="gate-container">
+        <div id="gate"></div>
+    </div>
+
+    <div id="content">
+        <h1>나의 고등학교 3년</h1>
+
+        <section id="grade1">
+            <h2>1학년</h2>
+            <p>1학년 때의 주요 활동, 기억에 남는 사건, 사진 등을 기록합니다.</p>
+            <img src="1학년_사진.jpg" alt="1학년 사진">
+        </section>
+
+        <section id="grade2">
+            <h2>2학년</h2>
+            <p>2학년 때의 주요 활동, 기억에 남는 사건, 사진 등을 기록합니다.</p>
+            <img src="2학년_사진.jpg" alt="2학년 사진">
+        </section>
+
+        <section id="grade3">
+            <h2>3학년</h2>
+            <p>3학년 때의 주요 활동, 기억에 남는 사건, 사진 등을 기록합니다.</p>
+            <img src="3학년_사진.jpg" alt="3학년 사진">
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2024 나의 고등학교 생활</p>
+    </footer>
+
+    <script>
+        const gateContainer = document.getElementById('gate-container');
+        const gate = document.getElementById('gate');
+        const content = document.getElementById('content');
+
+        gateContainer.addEventListener('click', () => {
+            gate.classList.add('open');
+            gateContainer.classList.add('open');
+
+            // 성문 애니메이션 이후 내용 표시
+            setTimeout(() => {
+                content.classList.add('visible');
+                document.body.style.overflow = 'auto'; // 내용 표시 후 스크롤 허용
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
